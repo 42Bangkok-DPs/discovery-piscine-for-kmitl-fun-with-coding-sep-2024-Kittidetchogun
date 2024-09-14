@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="left">
+    <select id="operations">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="right">
+    <button type="button" id="cal">Try me!</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#cal").click(function(event){
+                event.preventDefault();
+                let left = $("#left").val();
+                let right = $("#right").val();
+                let oper = $("#operations").val();
+                let result;
+
+                if(((left < 0)||(right < 0))||((left == '')||(right == ''))){
+                    alert('Error :(');
+                    console.log('Error :(');
+                }else if(((oper == '/')||(oper == '%'))&&(right == 0)){
+                    alert('It\'s over 9000!');
+                    console.log('It\'s over 9000!');
+                }else{
+                    left = parseInt(left);
+                    right = parseInt(right);
+                    switch(oper){
+                        case '+':
+                            result = left + right;
+                            break;
+                        case '-':
+                            result = left - right;
+                            break;
+                        case '*':
+                            result = left * right;
+                            break;
+                        case '/':
+                            result = left / right;
+                            break;
+                        case '%':
+                            result = left % right;
+                            break;
+                    }
+                    alert(result);
+                    console.log(result);
+                }
+            })
+            let timer = setInterval(useMe, 30000);
+            function useMe(){
+                alert("Please, use me...");
+            }
+        });
+    </script>
+</body>
+</html>

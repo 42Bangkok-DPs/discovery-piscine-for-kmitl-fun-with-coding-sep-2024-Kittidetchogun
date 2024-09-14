@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>balloon</title>
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="balloon"></div>
+    <script>
+        const color = ['red', 'green', 'blue'];
+        let index = 0;
+        let size = 200;
+        $(document).ready(function(){
+            $("#balloon").on({
+                click: function(){
+                    if(size > 420){
+                        size = 200;
+                    }else{
+                        size += 10;
+                    }
+                    index = (index + 1) % color.length;
+                    $("#balloon").css({
+                        width: `${size}px`,
+                        height: `${size}px`,
+                        backgroundColor: color[index]
+                    });
+                },mouseleave: function(){
+                    if(size <= 200){
+                        size = 200;
+                    }else{
+                        size -= 5;
+                    }
+                    index = (index - 1 + color.length) % color.length;
+                    $("#balloon").css({
+                        width: `${size}px`,
+                        height: `${size}px`,
+                        backgroundColor: color[index]
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
