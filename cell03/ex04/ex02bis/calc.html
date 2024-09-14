@@ -27,7 +27,7 @@
                 let oper = $("#operations").val();
                 let result;
 
-                if(((left < 0)||(right < 0))||((left == '')||(right == ''))||((/^-?\d+$/.test(left))||(/^-?\d+$/.test(right)))){
+                if(((left < 0)||(right < 0))||((left == '')||(right == ''))||((!Number.isInteger(left))||(!Number.isInteger(right)))){
                     alert('Error :(');
                     console.log('Error :(');
                 }else if(((oper == '/')||(oper == '%'))&&(right == 0)){
